@@ -3,6 +3,10 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
+
 public class LoginTest extends TestBase {
 
     @Test
@@ -13,7 +17,8 @@ public class LoginTest extends TestBase {
 
         // log("1. Login");
         planit.loginPage().loginAsReleaseManager();
-        Assert.assertEquals(1, 1);
+        assertEquals(1, 1, "");
+        assertThat("",1, equalTo(1));
 
         // log("2. Go to Deployment Package Page");
         planit.releasesPage().goToDeploymentPackagePage();
@@ -21,7 +26,7 @@ public class LoginTest extends TestBase {
 
         // log("3. go To Releases Page");
         planit.goToReleasesPage();
-        Assert.assertEquals("true", "true");
+        assertEquals("true", "true");
     }
 
 }
