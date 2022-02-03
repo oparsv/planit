@@ -1,4 +1,4 @@
-package planit.planitPages.releasesPage;
+package planitPageObjects.planitPages.releasesPage;
 
 import org.openqa.selenium.By;
 

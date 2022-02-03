@@ -1,5 +1,12 @@
 .gradle
 /build/
+.target
+target
+build
+
+
+.allure
+allure-results
 
 # Ignore Gradle GUI config
 gradle-app.setting

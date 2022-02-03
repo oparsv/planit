@@ -1,11 +1,42 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.qameta.allure.gradle.allure:allure-plugin:2.9.6"
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+    }
+}
+
 apply plugin: 'java'
+apply plugin: "io.qameta.allure"
+
 
 repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
 dependencies {
-    implementation 'org.testng:testng:7.4.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
-    implementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation(platform('org.junit:junit-bom:5.8.2'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testImplementation 'com.codeborne:selenide:6.2.1'
+
+    testRuntimeOnly("io.qameta.allure:allure-junit5:2.17.2")
+
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("io.qameta.allure:allure-okhttp3:2.17.2")
+    testImplementation('com.codeborne:selenide:6.2.1')
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("io.qameta.allure:allure-selenide:2.17.2")
+    testImplementation("io.undertow:undertow-core:2.2.14.Final")
+    testRuntimeOnly("io.qameta.allure:allure-junit5:2.17.2")
+    testRuntimeOnly("org.slf4j:slf4j-simple:1.7.33")
 }
